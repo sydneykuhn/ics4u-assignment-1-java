@@ -53,7 +53,14 @@ final class RockPaperScissors {
         final String userInputString = console.readLine(
             "Enter a number 1, 2 or 3 to chose : ");
 
-        final int userInput = Integer.valueOf(userInputString);
+	int userInput = 0;
+
+        try {
+	    userInput = Integer.valueOf(userInputString);
+        } catch(Exception e) {
+	    System.out.println("\nInvalid Input Entered\nDone.");
+	    System.exit(0);
+	}
 
         // Get random int
         final int min = 1;
@@ -76,8 +83,19 @@ final class RockPaperScissors {
         } else if (userInput == SCISSOR & randomInt == PAPER) {
             System.out.println("You win!");
         } else {
-            System.out.println("\nInvalid Input Entered.\nDone.");
-        }
-        System.out.println("\nDone.");
-    }
+	    System.out.println("Error Occurred Please Try Again.");
+	}
+
+	// Show user what the computer chose
+	if (randomInt == ROCK) {
+	    System.out.println("\nThe computer chose rock.");
+	} else if (randomInt == PAPER) {
+	    System.out.println("\nThe computer chose paper.");
+	} else if (randomInt == SCISSOR) {
+	    System.out.println("\nThe computer chose scissors.");
+	} else {
+	    System.out.println("\nError Occurred Please Try Again.");
+	}
+       System.out.println("\nDone.");
+  }
 }
